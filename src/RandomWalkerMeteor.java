@@ -27,6 +27,19 @@ public class RandomWalkerMeteor implements Meteor {
 
     @Override
     public void update() {
+        position.add(velocity);
+
+        bounce();
+    }
+
+    private void bounce() {
+        if (position.x > p5.width || position.x < 0) {
+            velocity.x = -velocity.x;
+        }
+
+        if (position.y > p5.height || position.y < 0) {
+            velocity.y = -velocity.y;
+        }
 
     }
 }
