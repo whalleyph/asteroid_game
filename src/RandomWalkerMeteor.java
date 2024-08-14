@@ -28,7 +28,7 @@ public class RandomWalkerMeteor implements Meteor {
     @Override
     public void update() {
         position.add(velocity);
-
+        velocity.rotate(p5.random(-0.03f, 0.03f));
         bounce();
     }
 
@@ -40,6 +40,5 @@ public class RandomWalkerMeteor implements Meteor {
         if (position.y > p5.height || position.y < 0) {
             velocity.y = -velocity.y;
         }
-
     }
 }
