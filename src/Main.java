@@ -1,8 +1,17 @@
 import processing.core.PApplet;
+import processing.core.PImage;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 
 public class Main extends PApplet {
-    Spark[] sparks;
+
+    private List<PImage> meteorImages;
+    private List<Meteor> meteors;
+
     public static void main(String[] args) {
         PApplet.main(new String[]{"Main"});
     }
@@ -13,19 +22,30 @@ public class Main extends PApplet {
 
     @Override
     public void setup() {
-        sparks = Spark.createSparks(this, 100);
+        this.meteorImages = Utils.loadAllMeteorImages(this);
+        meteors = new ArrayList<>();
+        for (int index = 0; index < 10; index++) {
+            Meteor newMeteor = new RandomWalkerMeteor(this, randomMeteorImage());
+            meteors.add(newMeteor);
+        }
+    }
+
+    private PImage randomMeteorImage() {
+        Random random = new Random();
+        int randomIndex = random.nextInt(meteorImages.size());
+        return meteorImages.get(randomIndex);
     }
 
 
     @Override
     public void draw() {
     background(100);
-        for (Spark s : sparks){
-            s.display();
+        for (Meteor m : meteors){
+            m.display();
         }
 
-        for (Spark s : sparks){
-            s.update();
+        for (Meteor m : meteors){
+            m.update();
         }
     }
 }
