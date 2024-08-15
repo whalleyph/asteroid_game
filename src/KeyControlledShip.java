@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PImage;
 import processing.core.PVector;
 
@@ -27,7 +28,14 @@ public class KeyControlledShip implements SpaceShip{
 
     @Override
     public void display() {
-        p5.image(image, position.x, position.y);
+        p5.push();
+        p5.imageMode(PConstants.CENTER);
+        p5.translate(position.x, position.y);
+        p5.rotate(velocity.heading());
+        p5.rotate(PConstants.PI /2);
+        p5.scale(0.3f);
+        p5.image(image, 0, 0);
+        p5.pop();
     }
 
     @Override
