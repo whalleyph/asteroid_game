@@ -11,13 +11,13 @@ public class RandomWalkerMeteor implements Meteor {
     RandomWalkerMeteor(PApplet p5, PImage image) {
         this.p5 = p5;
         this.position = new PVector(p5.random(0, p5.width), p5.random(0, p5.height));
-        this.velocity = new PVector(0, 1);
+        this.velocity = PVector.random2D().mult(p5.random(0.2f, 3));
         this.image = image;
     }
 
     @Override
     public void collisionWithOtherMeteors() {
-
+    // not yet implemented
     }
 
     @Override
