@@ -41,10 +41,11 @@ public class KeyControlledShip implements SpaceShip{
     @Override
     public void update() {
         position.add(velocity);
+        velocity.mult(0.99f);
     }
 
     public void turnLeft(){
-        velocity.rotate(-PApplet.PI / 4);
+        velocity.rotate(-PConstants.PI / 4);
     }
 
     @Override
