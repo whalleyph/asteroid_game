@@ -67,5 +67,11 @@ public class Main extends PApplet {
         if (key == ' '){
             spaceShip.turnLeft();
         }
+
+        if (key == CODED) {
+            if (keyCode == UP) {
+                spaceShip.thrust();
+            }
+        }
     }
 }

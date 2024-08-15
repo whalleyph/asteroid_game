@@ -39,4 +39,10 @@ public class KeyControlledShip implements SpaceShip{
         velocity.rotate(-PApplet.PI / 4);
     }
 
+    @Override
+    public void thrust() {
+        velocity.setMag(velocity.mag() + 1);
+    }
+
+
 }

@@ -3,4 +3,6 @@ public interface SpaceShip extends GameObject {
     void fireLaser();
 
     void turnLeft();
+
+    void thrust();
 }
