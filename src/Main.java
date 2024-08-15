@@ -18,7 +18,8 @@ public class Main extends PApplet {
     }
     @Override
     public void settings() {
-        size(800, 600);
+//        fullScreen();
+        size(1200, 900);
     }
 
     @Override
@@ -34,7 +35,7 @@ public class Main extends PApplet {
     private void setupMeteors() {
         this.meteorImages = Utils.loadAllMeteorImages(this);
         meteors = new ArrayList<>();
-        for (int index = 0; index < 10; index++) {
+        for (int index = 0; index < 15; index++) {
             Meteor newMeteor = new RandomWalkerMeteor(this, randomMeteorImage());
             meteors.add(newMeteor);
         }
@@ -55,8 +56,16 @@ public class Main extends PApplet {
             m.display();
         }
 
+        spaceShip.update();
         for (Meteor m : meteors){
             m.update();
+        }
+    }
+
+    @Override
+    public void keyPressed(){
+        if (key == ' '){
+            spaceShip.turnLeft();
         }
     }
 }

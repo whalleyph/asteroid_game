@@ -11,7 +11,7 @@ public class KeyControlledShip implements SpaceShip{
     public KeyControlledShip(PApplet p5){
         this.p5 = p5;
         this.position = new PVector(p5.width/2, p5.height/2);
-//        this.velocity = velocity;
+        this.velocity = new PVector(0, 1);
         this.image = p5.loadImage("images/playerShip1_blue.png");
     }
 
@@ -32,6 +32,11 @@ public class KeyControlledShip implements SpaceShip{
 
     @Override
     public void update() {
-
+        position.add(velocity);
     }
+
+    public void turnLeft(){
+        velocity.rotate(-PApplet.PI / 4);
+    }
+
 }
