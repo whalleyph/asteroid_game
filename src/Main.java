@@ -11,6 +11,7 @@ public class Main extends PApplet {
 
     private List<PImage> meteorImages;
     private List<Meteor> meteors;
+    private SpaceShip spaceShip;
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"Main"});
@@ -22,6 +23,15 @@ public class Main extends PApplet {
 
     @Override
     public void setup() {
+        setupMeteors();
+        setupSpaceShip();
+    }
+
+    private void setupSpaceShip() {
+        spaceShip = new KeyControlledShip(this);
+    }
+
+    private void setupMeteors() {
         this.meteorImages = Utils.loadAllMeteorImages(this);
         meteors = new ArrayList<>();
         for (int index = 0; index < 10; index++) {
@@ -40,6 +50,7 @@ public class Main extends PApplet {
     @Override
     public void draw() {
     background(100);
+        spaceShip.display();
         for (Meteor m : meteors){
             m.display();
         }

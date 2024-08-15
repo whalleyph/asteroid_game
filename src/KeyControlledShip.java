@@ -8,11 +8,11 @@ public class KeyControlledShip implements SpaceShip{
     private PVector velocity;
     private PImage image;
 
-    public KeyControlledShip(PApplet p5, PVector position, PVector velocity, PImage image){
+    public KeyControlledShip(PApplet p5){
         this.p5 = p5;
-        this.position = position;
-        this.velocity = velocity;
-        this.image = image;
+        this.position = new PVector(p5.width/2, p5.height/2);
+//        this.velocity = velocity;
+        this.image = p5.loadImage("images/playerShip1_blue.png");
     }
 
     @Override
@@ -27,7 +27,7 @@ public class KeyControlledShip implements SpaceShip{
 
     @Override
     public void display() {
-
+        p5.image(image, position.x, position.y);
     }
 
     @Override
