@@ -42,15 +42,35 @@ public class KeyControlledShip implements SpaceShip{
     public void update() {
         position.add(velocity);
         velocity.mult(0.99f);
+        manageWallCollision();
+    }
+
+    private void manageWallCollision() {
+        if (position.x > p5.width) {
+            position.x = 0;
+        }
+        if (position.x < 0) {
+            position.x = p5.width;
+        }
+        if (position.y > p5.height) {
+            position.y = 0;
+        }
+        if (position.y < 0) {
+            position.y = p5.height;
+        }
     }
 
     public void turnLeft(){
-        velocity.rotate(-PConstants.PI / 4);
+        velocity.rotate(-PConstants.PI / 45);
+    }
+
+    public void turnRight(){
+        velocity.rotate(PConstants.PI / 45);
     }
 
     @Override
     public void thrust() {
-        velocity.setMag(velocity.mag() + 1);
+        velocity.setMag(velocity.mag() + 0.1f);
     }
 
 
